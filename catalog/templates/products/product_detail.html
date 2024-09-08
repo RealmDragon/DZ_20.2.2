@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load media_path %}  # Подключение фильтра в начале шаблона
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ product.name }}</h1>
+    <img class="card-img-top" src="{{ product.image|mymedia }}" alt="{{ product.name }}">
+    <p>{{ product.description }}</p>
+    <p>Цена: {{ product.price }}</p>
+{% endblock %}

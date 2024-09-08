@@ -1,0 +1,11 @@
+<header>
+    <h1><a href="{% url 'index' %}">Наш интернет-магазин</a></h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'product_list' %}">Все товары</a></li>
+            {% for category in categories %}
+                <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

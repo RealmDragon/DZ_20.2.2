@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сортировка продуктов</title>
+</head>
+<body>
+  <h1>Список продуктов</h1>
+
+  <ul id="product-list">
+    </ul>
+
+  <script>
+    // Исходный список продуктов
+    const product_list_by_category = {
+      "Овощи": ["Помидор", "Огурец", "Морковь", "Картофель"],
+      "Фрукты": ["Яблоко", "Груша", "Банан", "Апельсин"],
+      "Мясо": ["Говядина", "Курица", "Свинина"],
+      "Молочные продукты": ["Молоко", "Йогурт", "Сыр"]
+    };
+
+    // Функция для сортировки списка продуктов по категории
+    function sortProductsByCategory() {
+      const productList = document.getElementById("product_list");
+      productList.innerHTML = ""; // Очищаем список продуктов
+
+      // Сортируем категории
+      const sortedCategories = Object.keys(product_list_by_category).sort();
+
+      // Выводим продукты по категориям
+      for (const category of sortedCategories) {
+        const categoryList = document.createElement("li");
+        categoryList.textContent = category;
+
+        const productsList = document.createElement("ul");
+        for (const product of product_list_by_category[category]) {
+          const productItem = document.createElement("li");
+          productItem.textContent = product;
+          productsList.appendChild(productItem);
+        }
+
+        categoryList.appendChild(productsList);
+        productList.appendChild(categoryList);
+      }
+    }
+
+    // Вызываем функцию для сортировки списка
+    sortProductsByCategory();
+  </script>
+</body>
+</html>

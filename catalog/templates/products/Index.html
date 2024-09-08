@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Наши товары</h1>
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product-card">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+                <h2><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h2>
+                <p>{{ product.description|truncatechars:100 }}</p>
+                <p>Цена: {{ product.price }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
